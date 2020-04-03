@@ -11,7 +11,7 @@ List<Arr> details(){
     for (var i = 0; i < 7; i++) {
       String day=getDay(now.weekday);
       dayList.add(Arr(day,now));
-      now=now.add(Duration(days: i+1));
+      now=now.add(Duration(days: 1));
     }
     return dayList;
 }
@@ -33,7 +33,11 @@ String getDay(int x){
     case 5:
       return "FRI";
       break;
+    case 7:
+      return "SUN";
+      break;
     default:
       return "SAT";
+      break;
   }
 }
