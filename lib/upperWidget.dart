@@ -10,7 +10,7 @@ class UpperWidget extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top:100),
+            margin: const EdgeInsets.only(top:80),
             child: Text(data.summary,style: TextStyle(
               color: Colors.white70,
               fontFamily:'Montserrat',
@@ -30,11 +30,11 @@ class UpperWidget extends StatelessWidget {
               ) ,
           ),
           Container(
-            margin: const EdgeInsets.fromLTRB(30, 15, 0, 0),
+            margin: const EdgeInsets.fromLTRB(45, 15, 0, 0),
             child: Text("${data.temp} ${String.fromCharCode(0x00B0)}",style: TextStyle(
-              color: Colors.white70,
+              color: Colors.white,
               fontFamily:"Roboto",
-              fontSize:90 ,
+              fontSize:95 ,
               fontWeight: FontWeight.w400
               ),
               ) ,
