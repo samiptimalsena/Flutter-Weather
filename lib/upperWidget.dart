@@ -10,7 +10,7 @@ class UpperWidget extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(top:80),
+            margin: const EdgeInsets.only(top:50),
             child: Text(data.summary,style: TextStyle(
               color: Colors.white70,
               fontFamily:'Montserrat',

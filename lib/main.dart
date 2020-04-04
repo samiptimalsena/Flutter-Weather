@@ -20,6 +20,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var upper;
   var lower;
+  var _showCircularIndicator=true;
 
 
   @override
@@ -30,7 +31,8 @@ class _MyAppState extends State<MyApp> {
     lower = fetchLower();
   }
 
-  Future<Null> refreshList(){
+  Future<Null> refreshList() async{
+    await new Future.delayed(new Duration(seconds: 3));
     setState(() {
       upper=fetchUpper();
       lower=fetchLower();
@@ -45,7 +47,7 @@ class _MyAppState extends State<MyApp> {
                 constraints: BoxConstraints.expand(),
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: DateTime.now().hour > 18
+                        image: DateTime.now().hour <6 && DateTime.now().hour<18
                             ? AssetImage("assets/images/night.jpg")
                             : AssetImage("assets/images/day.jpg"),
                         fit: BoxFit.cover)),
@@ -65,13 +67,15 @@ class _MyAppState extends State<MyApp> {
                         } else if (snapshots.hasError) {
                           return Text("${snapshots.error}");
                         }
-                        return Center(child: CircularProgressIndicator());
+                        return Container();
                       },
                     ),
                     FutureBuilder<List<Lower>>(
                       future: lower,
                       builder: (context, snapshots) {
-                        if (snapshots.hasData) {
+                        
+                        if (snapshots.hasData && _showCircularIndicator==true) {
+                          _showCircularIndicator=false;
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: snapshots.data.map((currentDay) {
@@ -84,7 +88,12 @@ class _MyAppState extends State<MyApp> {
                         } else if (snapshots.hasError) {
                           return Text("${snapshots.error}");
                         }
-                        return CircularProgressIndicator();
+                          return Column(
+                            children: <Widget>[
+                              CircularProgressIndicator()
+                          ],);
+                        
+                        
                       },
                     )
                   ],
