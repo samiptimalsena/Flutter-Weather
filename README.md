@@ -1,16 +1,12 @@
-# weather
+Screenshots of UI:
 
-A new Flutter project.
+During day hour:
 
-## Getting Started
+<img src="https://user-images.githubusercontent.com/51244494/78500878-c13cf580-7778-11ea-90a8-53f102004d34.png" width="200" height="400"/>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+At night:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<img src="https://user-images.githubusercontent.com/51244494/78500922-082aeb00-7779-11ea-892c-272dce6b6716.png" width="200" height="400"/>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<div>
