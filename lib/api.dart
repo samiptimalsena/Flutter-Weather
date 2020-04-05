@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:darksky_weather/darksky_weather_io.dart';
 import 'package:geolocator/geolocator.dart';
 import 'days.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 var dayList = details();
 
@@ -12,9 +13,13 @@ class Upper {
   Upper(this.summary, this.placeName, this.temp);
 }
 
-Future<Upper> fetchUpper() async {
-  Position position= await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-   var darksky = new DarkSkyWeather("13f7dd369b83ddedb72bc4e38f67bd60",
+Future<Position> fetchLocation() async {
+  return await Geolocator()
+      .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+}
+
+Future<Upper> fetchUpper(Position position) async {
+  var darksky = new DarkSkyWeather(DotEnv().env['API_KEY'],
       language: Language.English, units: Units.Auto);
 
   var forecast = await darksky.getTimeMachineForecast(
@@ -33,13 +38,10 @@ class Lower {
   Lower(this.day, this.temp);
 }
 
-Future<List<Lower>> fetchLower() async {
+Future<List<Lower>> fetchLower(Position position) async {
   List<Lower> lowerList = [];
 
-  Position position = await Geolocator()
-      .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-
-  var darksky = new DarkSkyWeather("13f7dd369b83ddedb72bc4e38f67bd60",
+  var darksky = new DarkSkyWeather(DotEnv().env['API_KEY'],
       language: Language.English, units: Units.Auto);
 
   for (var i = 1; i < 7; i++) {
